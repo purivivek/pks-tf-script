@@ -2,16 +2,6 @@
 
 Huge thanks to @pivotal-cf for [https://github.com/pivotal-cf/terraforming-gcp](https://github.com/pivotal-cf/terraforming-gcp). I have taken their work and upgraded it in accordance with current [PKS](https://docs.pivotal.io/runtimes/pks/1-0/gcp.html) documentation for GCP.
 
-## Prerequisites
-
-Your system needs the `gcloud` cli, as well as `terraform`:
-
-```bash
-brew update
-brew install Caskroom/cask/google-cloud-sdk
-brew install terraform
-```
-
 ### Var File
 
 Copy the stub content below into a file called `terraform.tfvars` and put it in the root of this project.
