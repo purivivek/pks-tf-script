@@ -1,0 +1,61 @@
+network.pivotal.io
+//Enable API 
+Compute Engine API 
+Identity and Access Management (IAM) API
+Cloud Resource Manager API
+Offical 
+https://github.com/pivotal-cf/terraforming-gcp
+
+Goal
+Deploy Ops Manager
+Deploy BOSH Director
+Install Pivotal Container Service tile
+Install Manual https://docs.pivotal.io/runtimes/pks/1-0/gcp.html
+
+
+
+sudo apt-get update && sudo apt-get -y upgrade
+sudo apt-get install git -y
+sudo apt-get install wget -y
+sudo apt-get install zip unzip -y
+wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
+unzip terraform_0.11.7_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+
+vi om-install
+wget -q -O - https://raw.githubusercontent.com/starkandwayne/homebrew-cf/master/public.key | apt-key add -
+echo "deb http://apt.starkandwayne.com stable main" | tee /etc/apt/sources.list.d/starkandwayne.list
+apt-get update
+apt-get install om
+chmod +x om-install
+sudo ./om-install
+
+https://github.com/Infra-Red/terraforming-pks-gcp
+mkdir certs
+
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+
+
+
+terraform init
+terraform plan -out=plan
+terraform apply plan >>output.log
+
+//Delete defulat-allow firewall rules
+
+cd 
+pivotal-container-service-1.1.0-build.311.pivotal
+https://network.pivotal.io/api/v2/products/pivotal-container-service/releases/126229/product_files/167585/download
+QpfdF4Many78H5WGV8Y_
+
+
+wget --post-data="" --header="Authorization: Token QpfdF4Many78H5WGV8Y_" https://network.pivotal.io/api/v2/products/pivotal-container-service/releases/126229/product_files/167585/download
+ -O "pivotal-container-service-1.1.0-build.311.pivotal"
+
+
+om -t 35.239.98.71 -u admin -p GcpRocks -k upload-product -p *.pivotal
+om -t 35.239.98.71 -u admin -p GcpRocks -k available-products
+
+om -t 35.239.98.71 -u admin -p GcpRocks -k stage-product --product-name pivotal-container-service --product-version 1.1.0-build.311
+
+
